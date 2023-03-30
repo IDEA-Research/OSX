@@ -33,7 +33,7 @@ cfg.set_args(args.gpu_ids)
 cudnn.benchmark = True
 
 # snapshot load
-cfg.set_additional_args(model_type='osx_l')
+cfg.set_additional_args(encoder_setting='osx_l', decoder_setting='normal')
 from OSX import get_model
 from utils.preprocessing import load_img, process_bbox, generate_patch_image
 import torch

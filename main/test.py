@@ -9,7 +9,8 @@ def parse_args():
     parser.add_argument('--gpu', type=str, dest='gpu_ids')
     parser.add_argument('--exp_name', type=str, default='output/test')
     parser.add_argument('--test_batch_size', type=int, default=32)
-    parser.add_argument('--model_type', type=str, default='osx_l', choices=['osx_b', 'osx_l'])
+    parser.add_argument('--encoder_setting', type=str, default='osx_l', choices=['osx_b', 'osx_l'])
+    parser.add_argument('--decoder_setting', type=str, default='normal', choices=['normal', 'wo_face_decoder', 'wo_decoder'])
     parser.add_argument('--testset', type=str, default='EHF')
     parser.add_argument('--agora_benchmark', action='store_true')
     parser.add_argument('--pretrained_model_path', type=str, default='../pretrained_models/osx_l.pth.tar')
@@ -32,7 +33,8 @@ def main():
     cfg.set_args(args.gpu_ids)
     cfg.set_additional_args(exp_name=args.exp_name,
                             test_batch_size=args.test_batch_size,
-                            model_type=args.model_type,
+                            encoder_setting=args.encoder_setting,
+                            decoder_setting=args.decoder_setting,
                             pretrained_model_path=args.pretrained_model_path,
                             agora_benchmark=args.agora_benchmark,
                             testset=args.testset,

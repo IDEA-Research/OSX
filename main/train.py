@@ -12,7 +12,8 @@ def parse_args():
     parser.add_argument('--num_thread', type=int, default=16)
     parser.add_argument('--end_epoch', type=int, default=14)
     parser.add_argument('--train_batch_size', type=int, default=32)
-    parser.add_argument('--model_type', type=str, default='osx_l', choices=['osx_b', 'osx_l'])
+    parser.add_argument('--encoder_setting', type=str, default='osx_l', choices=['osx_b', 'osx_l'])
+    parser.add_argument('--decoder_setting', type=str, default='normal', choices=['normal', 'wo_face_decoder', 'wo_decoder'])
     parser.add_argument('--agora_benchmark', action='store_true')
     parser.add_argument('--pretrained_model_path', type=str, default='../pretrained_models/osx_l.pth.tar')
     args = parser.parse_args()
@@ -37,7 +38,8 @@ def main():
     cfg.set_args(args.gpu_ids, args.lr, args.continue_train)
     cfg.set_additional_args(exp_name=args.exp_name,
                             num_thread=args.num_thread, train_batch_size=args.train_batch_size,
-                            model_type=args.model_type,
+                            encoder_setting=args.encoder_setting,
+                            decoder_setting=args.decoder_setting,
                             end_epoch=args.end_epoch,
                             pretrained_model_path=args.pretrained_model_path,
                             agora_benchmark=args.agora_benchmark

@@ -8,9 +8,11 @@ from timer import Timer
 from logger import colorlogger
 from torch.nn.parallel.data_parallel import DataParallel
 from config import cfg
-if not cfg.agora_benchmark:
+if cfg.decoder_setting == 'normal':
     from OSX import get_model
-else:
+elif cfg.decoder_setting == 'wo_face_decoder':
+    from OSX_WoFaceDecoder import get_model
+elif cfg.decoder_setting == 'wo_decoder':
     from OSX_WoDecoder import get_model
 from dataset import MultipleDatasets
 # dynamic dataset import

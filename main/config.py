@@ -14,7 +14,8 @@ class Config:
     encoder_pretrained_model_path = '../pretrained_models/osx_vit_l.pth'
     hand_pos_joint_num = 20
     face_pos_joint_num = 72
-    model_type = 'OSX'
+    encoder_setting = 'osx_l'
+    decoder_setting = 'normal'
     num_task_token = 24
     feat_dim = 768
     encoder_config_file = 'transformer_utils/configs/osx/encoder/body_encoder_large.py'
@@ -80,11 +81,11 @@ class Config:
         for k, v in kwargs.items():
             names[k] = v
         self.prepare_dirs(self.exp_name)
-        if self.model_type == 'osx_b':
+        if self.encoder_setting == 'osx_b':
             self.encoder_config_file = 'transformer_utils/configs/osx/encoder/body_encoder_base.py'
             self.encoder_pretrained_model_path = '../pretrained_models/osx_vit_b.pth'
             self.feat_dim = 768
-        elif self.model_type == 'osx_l':
+        elif self.encoder_setting == 'osx_l':
             self.encoder_config_file = 'transformer_utils/configs/osx/encoder/body_encoder_large.py'
             self.encoder_pretrained_model_path = '../pretrained_models/osx_vit_l.pth'
             self.feat_dim = 1024

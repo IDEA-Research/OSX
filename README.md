@@ -16,13 +16,9 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 
 ## 2. Create Environment  
 
-- Python 3 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux))
+- [PyTorch >= 1.7](https://pytorch.org/) + [CUDA](https://developer.nvidia.com/cuda-downloads)
 
-- [PyTorch >= 1.3](https://pytorch.org/）
-
-- NVIDIA GPU + [CUDA](https://developer.nvidia.com/cuda-downloads)
-
-  Recommend to install pytorch by:
+  Recommend to install by:
 
   ```shell
   pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
@@ -180,7 +176,7 @@ Download pretrained encoder `osx_vit_l.pth` and `osx_vit_b.pth` from [here](http
 
 In the `main` folder, run  
 ```bash  
-python train.py --gpu 0,1,2,3 --lr 1e-4 --exp_name output/train_setting1 --end_epoch 14 --train_batch_size 32
+python train.py --gpu 0,1,2,3 --lr 1e-4 --exp_name output/train_setting1 --end_epoch 14 --train_batch_size 16
 ```
 After training, run the following command to evaluate your pretrained model on EHF and AGORA-val:
 
@@ -190,26 +186,26 @@ python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_mode
 # test on AGORA-val
 python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth --testset AGORA
 ```
-You can use a light-weight version OSX by adding `--model_type osx_b`.
+To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder settiing by adding `--decoder_setting wo_face_decoder`
 #### (3) Train on AGORA and Test on AGORA-test
 
 In the `main` folder, run  
 
 ```bash  
-python train.py --gpu 0,1,2,3 --lr 1e-4 --exp_name output/train_setting2 --end_epoch 140 --train_batch_size 32  --agora_benchmark
+python train.py --gpu 0,1,2,3 --lr 1e-4 --exp_name output/train_setting2 --end_epoch 140 --train_batch_size 16  --agora_benchmark --decoder_setting wo_decoder
 ```
 
 After training, run the following command to evaluate your pretrained model on AGORA-test:
 
 ```bash  
-python test.py --gpu 0,1,2,3 --exp_name output/train_setting2/ --pretrained_model_path ../output/train_setting2/model_dump/snapshot_139.pth --testset AGORA --agora_benchmark --test_batch_size 64
+python test.py --gpu 0,1,2,3 --exp_name output/train_setting2/ --pretrained_model_path ../output/train_setting2/model_dump/snapshot_139.pth --testset AGORA --agora_benchmark --test_batch_size 64 --decoder_setting wo_decoder
 ```
 
 The reconstruction result will be saved at `output/train_setting2/result/`.
 
 You can zip the `predictions` folder into `predictions.zip` and submit it to the [AGORA benchmark](https://agora-evaluation.is.tuebingen.mpg.de/) to obtain the evaluation metrics. 
 
-You can use a light-weight version OSX by adding `--model_type osx_b`.
+You can use a light-weight version OSX by adding `--encoder_setting osx_b`.
 
 ## 6. Testing OSX
 
@@ -263,6 +259,8 @@ You can zip the `predictions` folder into `predictions.zip` and submit it to the
 ### Troubleshoots
 
 * `RuntimeError: Subtraction, the '-' operator, with a bool tensor is not supported. If you are trying to invert a mask, use the '~' or 'logical_not()' operator instead.`: Go to [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527)
+
+* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27)
 
 ### Acknowledgement
 
