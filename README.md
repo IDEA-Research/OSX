@@ -16,7 +16,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 
 ## 2. Create Environment  
 
-- [PyTorch>=1.7](https://pytorch.org/）+ [CUDA](https://developer.nvidia.com/cuda-downloads)
+- [PyTorch >= 1.7]([https://developer.nvidia.com/cuda-downloads](https://pytorch.org/))+ [CUDA](https://developer.nvidia.com/cuda-downloads)
 
   Recommend to install pytorch by:
 
