@@ -16,11 +16,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 
 ## 2. Create Environment  
 
-- Python 3 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux))
-
-- [PyTorch >= 1.3](https://pytorch.org/）
-
-- NVIDIA GPU + [CUDA](https://developer.nvidia.com/cuda-downloads)
+- [PyTorch >= 1.7](https://pytorch.org/）+ [CUDA](https://developer.nvidia.com/cuda-downloads)
 
   Recommend to install pytorch by:
 
