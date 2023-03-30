@@ -264,6 +264,8 @@ You can zip the `predictions` folder into `predictions.zip` and submit it to the
 
 * `RuntimeError: Subtraction, the '-' operator, with a bool tensor is not supported. If you are trying to invert a mask, use the '~' or 'logical_not()' operator instead.`: Go to [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527)
 
+* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27)
+
 ### Acknowledgement
 
 This repo is mainly based on [Hand4Whole](https://github.com/mks0601/Hand4Whole_RELEASE). We thank the well-organized code and patient answers of [Gyeongsik Moon](https://mks0601.github.io/) in the issue!
