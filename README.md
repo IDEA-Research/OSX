@@ -260,7 +260,7 @@ You can zip the `predictions` folder into `predictions.zip` and submit it to the
 
 * `RuntimeError: Subtraction, the '-' operator, with a bool tensor is not supported. If you are trying to invert a mask, use the '~' or 'logical_not()' operator instead.`: Go to [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527)
 
-* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27). It seems that this solusion only works for RTX3090. If it work for V100 or A100 in your machine, please tell me in the issue :)
+* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27). It seems that this solusion only works for RTX3090. If it works for V100 or A100 in your case, please tell me in the issue :)
 
 ### Acknowledgement
 
