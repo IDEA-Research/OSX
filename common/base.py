@@ -178,7 +178,7 @@ class Tester(Base):
         from collections import OrderedDict
         new_state_dict = OrderedDict()
         for k, v in ckpt['network'].items():
-            k = k.replace('backbone', 'encoder').replace('body_rotation_net', 'body_regressor').replace(
+            k = k.replace('module.backbone', 'module.encoder').replace('body_rotation_net', 'body_regressor').replace(
                 'hand_rotation_net', 'hand_regressor')
             new_state_dict[k] = v
         model.load_state_dict(new_state_dict, strict=False)
