@@ -76,6 +76,8 @@ ${ROOT}
 |   |   |-- human_model_files
 |   |   |   |-- smpl
 |   |   |   |   |-- SMPL_NEUTRAL.pkl
+|   |   |   |   |-- SMPL_MALE.pkl
+|   |   |   |   |-- SMPL_FEMALE.pkl
 |   |   |   |-- smplx
 |   |   |   |   |-- MANO_SMPLX_vertex_ids.pkl
 |   |   |   |   |-- SMPL-X__FLAME_vertex_ids.npy
