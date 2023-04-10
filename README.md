@@ -188,7 +188,7 @@ python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_mode
 # test on AGORA-val
 python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth --testset AGORA
 ```
-To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder settiing by adding `--decoder_setting wo_face_decoder`
+To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder setting by adding `--decoder_setting wo_face_decoder`
 #### (3) Train on AGORA and Test on AGORA-test
 
 In the `main` folder, run  
@@ -262,7 +262,7 @@ You can zip the `predictions` folder into `predictions.zip` and submit it to the
 
 * `RuntimeError: Subtraction, the '-' operator, with a bool tensor is not supported. If you are trying to invert a mask, use the '~' or 'logical_not()' operator instead.`: Go to [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527)
 
-* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27). It seems that this solusion only works for RTX3090. If it works for V100 or A100 in your case, please tell me in the issue :)
+* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27). It seems that this solution only works for RTX3090. If it works for V100 or A100 in your case, please tell me in the issue :)
 
 ### Acknowledgement
 
