@@ -87,14 +87,14 @@ class Model(nn.Module):
         joint_cam = joint_cam - root_cam
         mesh_cam = mesh_cam + cam_trans[:, None, :]  # for rendering
 
-        # left hand root (left wrist)-relative 3D coordinatese
+        # left hand root (left wrist)-relative 3D coordinates
         lhand_idx = smpl_x.joint_part['lhand']
         lhand_cam = joint_cam[:, lhand_idx, :]
         lwrist_cam = joint_cam[:, smpl_x.lwrist_idx, None, :]
         lhand_cam = lhand_cam - lwrist_cam
         joint_cam = torch.cat((joint_cam[:, :lhand_idx[0], :], lhand_cam, joint_cam[:, lhand_idx[-1] + 1:, :]), 1)
 
-        # right hand root (right wrist)-relative 3D coordinatese
+        # right hand root (right wrist)-relative 3D coordinates
         rhand_idx = smpl_x.joint_part['rhand']
         rhand_cam = joint_cam[:, rhand_idx, :]
         rwrist_cam = joint_cam[:, smpl_x.rwrist_idx, None, :]
