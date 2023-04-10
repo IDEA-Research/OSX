@@ -69,7 +69,7 @@ class Model(nn.Module):
 
         # project 3D coordinates to 2D space
         if mode == 'train' and len(cfg.trainset_3d) == 1 and cfg.trainset_3d[0] == 'AGORA' and len(
-                cfg.trainset_2d) == 0:  # prevent gradients from backpropagating to SMPLX paraemter regression module
+                cfg.trainset_2d) == 0:  # prevent gradients from backpropagating to SMPLX parameter regression module
             x = (joint_cam[:, :, 0].detach() + cam_trans[:, None, 0]) / (
                     joint_cam[:, :, 2].detach() + cam_trans[:, None, 2] + 1e-4) * cfg.focal[0] + cfg.princpt[0]
             y = (joint_cam[:, :, 1].detach() + cam_trans[:, None, 1]) / (
