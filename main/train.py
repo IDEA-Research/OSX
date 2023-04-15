@@ -19,7 +19,7 @@ def parse_args():
     args = parser.parse_args()
 
     if not args.gpu_ids:
-        assert 0, "Please set propoer gpu ids"
+        assert 0, "Please set proper gpu ids"
 
     if not args.lr:
         assert 0, "Please set learning rate"

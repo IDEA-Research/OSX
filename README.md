@@ -87,6 +87,8 @@ ${ROOT}
 |   |   |-- human_model_files
 |   |   |   |-- smpl
 |   |   |   |   |-- SMPL_NEUTRAL.pkl
+|   |   |   |   |-- SMPL_MALE.pkl
+|   |   |   |   |-- SMPL_FEMALE.pkl
 |   |   |   |-- smplx
 |   |   |   |   |-- MANO_SMPLX_vertex_ids.pkl
 |   |   |   |   |-- SMPL-X__FLAME_vertex_ids.npy
@@ -108,7 +110,7 @@ ${ROOT}
 * `tool` contains pre-processing codes of AGORA and pytorch model editing codes.
 * `output` contains log, trained models, visualized outputs, and test result.  
 * `common` contains kernel codes for Hand4Whole.  
-* `human_model_files` contains `smpl`, `smplx`, `mano`, and `flame` 3D model files. Download the files from [[smpl]](https://smpl.is.tue.mpg.de/) [[smplx]](https://smpl-x.is.tue.mpg.de/) [[SMPLX_to_J14.pkl]](https://github.com/vchoutas/expose#preparing-the-data) [[mano]](https://mano.is.tue.mpg.de/) [[flame]](https://flame.is.tue.mpg.de/).
+* `human_model_files` contains `smpl`, `smplx`, `mano`, and `flame` 3D model files. Download the files from [[smpl]](https://smpl.is.tue.mpg.de/) [[smplx]](https://smpl-x.is.tue.mpg.de/) [[SMPLX_to_J14.pkl]](https://github.com/vchoutas/expose#preparing-the-data) [[mano]](https://mano.is.tue.mpg.de/) [[flame]](https://flame.is.tue.mpg.de/). If you have problems about the model preparation, please refer to this [issue](https://github.com/IDEA-Research/OSX/issues/9), where I provide the link for each files.
 ### (2) Data  
 You need to follow directory structure of the `dataset` as below.  
 ```  
@@ -157,7 +159,7 @@ ${ROOT}
 * Download Human3.6M parsed data and SMPL-X parameters [[data](https://drive.google.com/drive/folders/1r0B9I3XxIIW_jsXjYinDpL6NFcxTZart?usp=sharing)][[SMPL-X parameters from NeuralAnnot](https://drive.google.com/drive/folders/19ifIQtAB3ll8d37-kerL1eQWp31mOwJM?usp=sharing)]
 * Download MPII parsed data and SMPL-X parameters [[data](https://drive.google.com/drive/folders/1rrL_RxhwQgwhq5BU1iIRPwl285B_KTpU?usp=sharing)][[SMPL-X parameters from NeuralAnnot](https://drive.google.com/file/d/1alkKvhkqQGqriKst83uS-kUG7v6SkM7W/view?usp=sharing)]
 * Download MPI-INF-3DHP parsed data and SMPL-X parameters [[data](https://drive.google.com/drive/folders/1wQbHEXPv-WH1sNOLwdfMVB7OWsiJkq2M?usp=sharing)][[SMPL-X parameters from NeuralAnnot](https://drive.google.com/file/d/1ADOJlaqaBDjZ3IEgrgLTQwNf6iHd-rGH/view?usp=sharing)]
-* Download MSCOCO data and SMPL-X parameters [[data](https://github.com/jin-s13/COCO-WholeBody)][[SMPL-X parameters from NeuralAnnot](https://drive.google.com/file/d/1RVJiI2Y1TjiAPcRnDZk5CX5L7Vehfinm/view?usp=sharing)]
+* Download MSCOCO data and SMPL-X parameters [[data](https://github.com/jin-s13/COCO-WholeBody)][[SMPL-X parameters](https://drive.google.com/file/d/1UVyfqrOtkbhI3MgpBYXd1YXbkD8aJtL9/view?usp=share_link)]
 * Download 3DPW parsed data [[data](https://drive.google.com/drive/folders/1HByTBsdg_A_o-d89qd55glTl44ya3dOs?usp=sharing)]
 * All annotation files follow [MSCOCO format](http://cocodataset.org/#format-data). If you want to add your own dataset, you have to convert it to [MSCOCO format](http://cocodataset.org/#format-data).  
   
@@ -197,7 +199,7 @@ python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_mode
 # test on AGORA-val
 python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth --testset AGORA
 ```
-To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder settiing by adding `--decoder_setting wo_face_decoder`
+To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder setting by adding `--decoder_setting wo_face_decoder`
 #### (3) Train on AGORA and Test on AGORA-test
 
 In the `main` folder, run  
@@ -271,7 +273,7 @@ You can zip the `predictions` folder into `predictions.zip` and submit it to the
 
 * `RuntimeError: Subtraction, the '-' operator, with a bool tensor is not supported. If you are trying to invert a mask, use the '~' or 'logical_not()' operator instead.`: Go to [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527)
 
-* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27)
+* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27). It seems that this solution only works for RTX3090. If it works for V100 or A100 in your case, please tell me in the issue :)
 
 ### Acknowledgement
 
@@ -280,10 +282,10 @@ This repo is mainly based on [Hand4Whole](https://github.com/mks0601/Hand4Whole_
 ## Reference  
 
 ```  
-@article{lin2023osx,
-  author    = {Lin, Jing and Zeng, Ailing and Wang, Haoqian and Zhang, Lei and Li, Yu},
-  title     = {One-Stage 3D Whole-Body Mesh Recovery with Component Aware Transformer},
-  journal   = {CVPR},
-  year      = {2023},
+@article{lin2023one,
+  title={One-Stage 3D Whole-Body Mesh Recovery with Component Aware Transformer},
+  author={Lin, Jing and Zeng, Ailing and Wang, Haoqian and Zhang, Lei and Li, Yu},
+  journal={arXiv preprint arXiv:2303.16160},
+  year={2023}
 }
 ```
