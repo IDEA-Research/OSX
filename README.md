@@ -20,6 +20,7 @@
 <br>
 <em> Demo of Grounded-SAM-OSX.</em>
 </p>
+
 | ![space-1.jpg](./assets/grounded_sam_osx_output1.jpg) |
 | :---------------------------------------------------: |
 |             *A person with pink clothes*              |
