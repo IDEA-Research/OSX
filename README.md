@@ -5,10 +5,11 @@
 [Jing Lin](https://github.com/linjing7), [Ailing Zeng](https://ailingzeng.site/), [Haoqian Wang](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Lei Zhang](https://www.leizhang.org/), [Yu Li](https://yu-li.github.io/)
 
 <p align="middle">
-<img src="assets/demo_video.gif" width="866" height="240">
+<img src="assets/demo_video.gif" width="1000">
 <br>
 <em>The proposed UBody dataset</em>
 </p>
+
 
 
 #### News
@@ -16,10 +17,11 @@
 - **2023.04.15 :** We merge OSX into [Grounded-SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything)  and support promptable 3D whole-body mesh recovery.🔥
 
 <p align="middle">
-<img src="assets/grouned_sam_osx_demo.gif" width="866">
+<img src="assets/grouned_sam_osx_demo.gif" width="1000">
 <br>
 <em> Demo of Grounded-SAM-OSX.</em>
 </p>
+
 
 | ![space-1.jpg](./assets/grounded_sam_osx_output1.jpg) |
 | :---------------------------------------------------: |
