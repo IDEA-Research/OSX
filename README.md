@@ -11,7 +11,18 @@
 </p>
 
 
+#### News
+
+- **2023.04.15 :** We merge OSX into [Grounded-SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything)  and support promptable 3D whole-body mesh recovery.🔥
+
+<p align="middle">
+<img src="assets/grouned_sam_osx_demo.gif" width="866">
+<br>
+<em> Demo of Grounded-SAM-OSX.</em>
+</p>
+
 ## 1. Introduction  
+
 This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-Stage 3D Whole-Body Mesh Recovery with Component Aware Transformer (CVPR2023)](https://osx-ubody.github.io/). We propose the first one-stage whole-body mesh recovery method (OSX) and build a large-scale upper-body dataset (UBody). It is the top-1 method on [AGORA benchmark](https://agora-evaluation.is.tuebingen.mpg.de/) SMPL-X Leaderboard (dated March 2023).
 
 ## 2. Create Environment  
