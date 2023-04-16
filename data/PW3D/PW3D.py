@@ -7,9 +7,9 @@ import json
 import copy
 from pycocotools.coco import COCO
 from config import cfg
-from utils.human_models import smpl_x, smpl
-from utils.preprocessing import load_img, process_bbox, augmentation, process_human_model_output
-from utils.transforms import rigid_align
+from common.utils.human_models import smpl_x, smpl
+from common.utils.preprocessing import load_img, process_bbox, augmentation, process_human_model_output
+from common.utils.transforms import rigid_align
 
 class PW3D(torch.utils.data.Dataset):
     def __init__(self, transform, data_split):
@@ -70,7 +70,7 @@ class PW3D(torch.utils.data.Dataset):
 
             vis = True
             if vis:
-                from utils.vis import vis_keypoints, vis_mesh, save_obj
+                from common.utils.vis import vis_keypoints, vis_mesh, save_obj
                 """
                 file_name = str(cur_sample_idx+n)
                 img = (out['img'].transpose(1,2,0)[:,:,::-1] * 255).copy()

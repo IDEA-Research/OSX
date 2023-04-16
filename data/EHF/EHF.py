@@ -8,9 +8,9 @@ import json
 import cv2
 import torch
 from pycocotools.coco import COCO
-from utils.human_models import smpl_x
-from utils.preprocessing import load_img, process_bbox, augmentation, load_ply
-from utils.transforms import rigid_align
+from common.utils.human_models import smpl_x
+from common.utils.preprocessing import load_img, process_bbox, augmentation, load_ply
+from common.utils.transforms import rigid_align
 
 
 class EHF(torch.utils.data.Dataset):
@@ -216,7 +216,7 @@ class EHF(torch.utils.data.Dataset):
                 os.makedirs(kpt_save_folder, exist_ok=True)
                 mesh_save_folder = os.path.join(save_folder, 'mesh_origin')
                 os.makedirs(mesh_save_folder, exist_ok=True)
-                # from utils.vis import vis_keypoints, render_mesh, save_obj
+                # from common.utils.vis import vis_keypoints, render_mesh, save_obj
                 img = (out['img'].transpose(1, 2, 0)[:, :, ::-1] * 255).copy()
                 joint_img = out['joint_img'].copy()
                 joint_img[:, 0] = joint_img[:, 0] / cfg.output_hm_shape[2] * cfg.input_img_shape[1]

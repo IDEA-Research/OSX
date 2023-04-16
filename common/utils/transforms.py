@@ -3,7 +3,7 @@ import numpy as np
 import scipy
 from config import cfg
 from torch.nn import functional as F
-from utils.geometry import rotation_matrix_to_angle_axis
+from common.utils.geometry import rotation_matrix_to_angle_axis
 
 
 def cam2pixel(cam_coord, f, c):

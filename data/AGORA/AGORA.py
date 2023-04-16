@@ -9,10 +9,10 @@ import pickle
 import cv2
 import torch
 from pycocotools.coco import COCO
-from utils.human_models import smpl_x
-from utils.preprocessing import load_img, sanitize_bbox, process_bbox, augmentation, process_db_coord, \
+from common.utils.human_models import smpl_x
+from common.utils.preprocessing import load_img, sanitize_bbox, process_bbox, augmentation, process_db_coord, \
     process_human_model_output, load_ply, load_obj
-from utils.transforms import rigid_align
+from common.utils.transforms import rigid_align
 
 class AGORA(torch.utils.data.Dataset):
     def __init__(self, transform, data_split):
@@ -530,7 +530,7 @@ class AGORA(torch.utils.data.Dataset):
 
             vis = False
             if vis:
-                from utils.vis import vis_keypoints, vis_mesh, save_obj, render_mesh
+                from common.utils.vis import vis_keypoints, vis_mesh, save_obj, render_mesh
                 # img = (out['img'].transpose(1,2,0)[:,:,::-1] * 255).copy()
                 # joint_img = out['joint_img'].copy()
                 # joint_img[:,0] = joint_img[:,0] / cfg.output_hm_shape[2] * cfg.input_img_shape[1]

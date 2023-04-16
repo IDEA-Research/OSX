@@ -25,7 +25,7 @@ import copy
 import warnings
 from mmcv.cnn import build_activation_layer, build_norm_layer, xavier_init
 
-from utils.human_models import smpl_x
+from common.utils.human_models import smpl_x
 
 from config import cfg
 

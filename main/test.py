@@ -40,7 +40,7 @@ def main():
                             testset=args.testset,
                             )
     cudnn.benchmark = True
-    from base import Tester
+    from common.base import Tester
     tester = Tester()
     tester._make_batch_generator()
     tester._make_model()

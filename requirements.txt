@@ -26,3 +26,5 @@ pycocotools
 plyfile
 timm
 pyglet
+psutil
+seaborn

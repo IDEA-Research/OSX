@@ -119,8 +119,9 @@ class Config:
 cfg = Config()
 
 ## add some paths to the system root dir
-sys.path.insert(0, osp.join(cfg.root_dir, 'common'))
-from utils.dir import add_pypath, make_folder
+sys.path.insert(0, cfg.root_dir)
+# sys.path.insert(0, osp.join(cfg.root_dir, 'common'))
+from common.utils.dir import add_pypath, make_folder
 add_pypath(osp.join(cfg.data_dir))
 for i in range(len(cfg.dataset_list)):
     add_pypath(osp.join(cfg.root_dir, 'data', cfg.dataset_list[i]))

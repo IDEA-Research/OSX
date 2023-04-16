@@ -23,7 +23,7 @@ from easydict import EasyDict
 from mmpose.models.losses.regression_loss import L1Loss
 from mmpose.models.losses.rle_loss import RLELoss_poseur, RLEOHKMLoss
 from config import cfg
-from utils.human_models import smpl_x
+from common.utils.human_models import smpl_x
 from torch.distributions.utils import lazy_property
 
 from torch.distributions import MultivariateNormal

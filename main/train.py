@@ -45,7 +45,7 @@ def main():
                             agora_benchmark=args.agora_benchmark
                             )
     cudnn.benchmark = True
-    from base import Trainer
+    from common.base import Trainer
     trainer = Trainer()
     trainer._make_batch_generator()
     trainer._make_model()

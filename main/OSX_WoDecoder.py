@@ -1,10 +1,10 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-from nets.module_wo_decoder import PositionNet, HandRotationNet, FaceRegressor, BoxNet, HandRoI, BodyRotationNet
-from nets.loss import CoordLoss, ParamLoss, CELoss
-from utils.human_models import smpl_x
-from utils.transforms import rot6d_to_axis_angle, restore_bbox
+from common.nets.module_wo_decoder import PositionNet, HandRotationNet, FaceRegressor, BoxNet, HandRoI, BodyRotationNet
+from common.nets.loss import CoordLoss, ParamLoss, CELoss
+from common.utils.human_models import smpl_x
+from common.utils.transforms import rot6d_to_axis_angle, restore_bbox
 from config import cfg
 import math
 import copy

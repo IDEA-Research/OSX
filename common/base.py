@@ -4,8 +4,8 @@ import abc
 from torch.utils.data import DataLoader
 import torch.optim
 import torchvision.transforms as transforms
-from timer import Timer
-from logger import colorlogger
+from common.timer import Timer
+from common.logger import colorlogger
 from torch.nn.parallel.data_parallel import DataParallel
 from config import cfg
 if cfg.decoder_setting == 'normal':
