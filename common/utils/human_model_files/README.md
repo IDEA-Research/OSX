@@ -1,4 +1,6 @@
 Please down the human model files and place them here as the following structure:
+
+```
 |-- smpl
 |   |-- SMPL_NEUTRAL.pkl
 |   |-- SMPL_MALE.pkl
@@ -18,6 +20,7 @@ Please down the human model files and place them here as the following structure
 |   |-- flame_dynamic_embedding.npy
 |   |-- flame_static_embedding.pkl
 |   |-- FLAME_NEUTRAL.pkl
+```
 
 Here we provide the download link of each files:
 
