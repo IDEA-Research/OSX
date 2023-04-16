@@ -14,7 +14,8 @@
 
 #### News
 
-- **2023.04.15 :** We merge OSX into [Grounded-SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything)  and support promptable 3D whole-body mesh recovery.🔥
+- **2023.04.15 :** We merge OSX into [Grounded-SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything)  and support promptable 3D whole-body mesh recovery. 🔥  
+- **2023.04.17 :** We fix bug of rendering in A100/V100  and support yolov5 as a person detector in demo.py. :rocket: 
 
 <p align="middle">
 <img src="assets/grouned_sam_osx_demo.gif" width="1000">
@@ -30,8 +31,6 @@
 | ![space-1.jpg](./assets/grounded_sam_osx_output2.jpg) |
 | :---------------------------------------------------: |
 |               *A man with a sunglasses*               |
-
-## 
 
 ## 1. Introduction  
 
@@ -59,8 +58,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 * Download the pre-trained OSX from [here](https://drive.google.com/drive/folders/1x7MZbB6eAlrq5PKC9MaeIm4GqkBpokow?usp=share_link).
 * Prepare `input.png` and pre-trained snapshot at `demo` folder.
 * Prepare `human_model_files` folder following below `Directory` part and place it at `common/utils/human_model_files`.
-* Go to any of `main` folders and edit `bbox` of `demo.py` .
-* Run `python demo.py --gpu 0`.
+* Go to `demo` folders, and run `python demo.py --gpu 0 --img_path IMG_PATH --output_folder OUTPUT_FOLDER `. Please replace `IMG_PATH` and `OUTPUT_FOLDRE` with your own image path and saving folder. 
 * If you run this code in ssh environment without display device, do follow:
 ```
 1、Install oemesa follow https://pyrender.readthedocs.io/en/latest/install/
