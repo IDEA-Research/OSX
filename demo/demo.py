@@ -14,6 +14,9 @@ import cv2
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--gpu', type=str, dest='gpu_ids')
+    parser.add_argument('--img_path', type=str, default='input.png')
+    parser.add_argument('--output_path', type=str, default='render_img.png')
+
     args = parser.parse_args()
 
     # test gpus
@@ -51,9 +54,41 @@ model.eval()
 
 # prepare input image
 transform = transforms.ToTensor()
-img_path = '../demo/input.png'
-original_img = load_img(img_path)
+original_img = load_img(args.img_path)
 original_img_height, original_img_width = original_img.shape[:2]
+
+
+# detect human bbox with yolov5s
+model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+classes = open('coco.names').read().split('\n')
+with torch.no_grad():
+    results = model(original_img)
+person_results = results.xyxy[0][results.xyxy[0][:, 5] == 0]
+class_ids, confidences, boxes = [], [], []
+
+# Loop through each person detection
+for detection in person_results:
+    x1, y1, x2, y2, confidence, class_id = detection.tolist()
+    class_ids.append(class_id)
+    confidences.append(confidence)
+    boxes.append([x1, y1, x2 - x1, y2 - y1])
+
+# Apply non-max suppression to remove redundant detections
+indices = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
+
+# Loop through each detected object and draw bounding box
+for i in indices:
+    i = i[0]
+    box = boxes[i]
+    x, y, w, h = box
+    cv2.rectangle(img, (int(x), int(y)), (int(x + w), int(y + h)), (0, 255, 0), 2)
+
+# Show image with bounding boxes
+cv2.imshow("Image", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
 
 # prepare bbox
 bbox = [193, 120, 516-193, 395-120] # xmin, ymin, width, height

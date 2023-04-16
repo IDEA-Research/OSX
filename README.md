@@ -92,6 +92,9 @@ ${ROOT}
 |   |   |   |   |-- SMPL-X__FLAME_vertex_ids.npy
 |   |   |   |   |-- SMPLX_NEUTRAL.pkl
 |   |   |   |   |-- SMPLX_to_J14.pkl
+|   |   |   |   |-- SMPLX_NEUTRAL.npz
+|   |   |   |   |-- SMPLX_MALE.npz
+|   |   |   |   |-- SMPLX_FEMALE.npz
 |   |   |   |-- mano
 |   |   |   |   |-- MANO_LEFT.pkl
 |   |   |   |   |-- MANO_RIGHT.pkl

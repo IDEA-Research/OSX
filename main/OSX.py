@@ -10,6 +10,7 @@ import math
 import copy
 from mmpose.models import build_posenet
 from mmcv import Config
+import os
 
 class Model(nn.Module):
     def __init__(self, encoder, body_position_net, body_rotation_net, box_net, hand_position_net, hand_roi_net, hand_decoder,
@@ -423,14 +424,14 @@ def get_model(mode):
     hand_roi_net = HandRoI(feat_dim=cfg.feat_dim, upscale=cfg.upscale)
     hand_position_net = PositionNet('hand', feat_dim=cfg.feat_dim//2)
     hand_rotation_net = HandRotationNet('hand', feat_dim=256)
-    decoder_cfg = Config.fromfile('transformer_utils/configs/osx/decoder/hand_decoder.py')
+    decoder_cfg = Config.fromfile(os.path.join(cfg.root_dir, 'main/transformer_utils/configs/osx/decoder/hand_decoder.py'))
     hand_decoder = build_posenet(decoder_cfg.model)
 
     # face
     face_roi_net = FaceRoI(feat_dim=cfg.feat_dim, upscale=cfg.upscale)
     face_position_net = PositionNet('face', feat_dim=cfg.feat_dim//2)
     face_regressor = FaceRegressor(feat_dim=cfg.feat_dim, joint_feat_dim=256)
-    decoder_cfg = Config.fromfile('transformer_utils/configs/osx/decoder/face_decoder.py')
+    decoder_cfg = Config.fromfile(os.path.join(cfg.root_dir, 'main/transformer_utils/configs/osx/decoder/face_decoder.py'))
     face_decoder = build_posenet(decoder_cfg.model)
 
     if mode == 'train':

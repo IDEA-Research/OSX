@@ -8,19 +8,6 @@ class Config:
     dataset_list = ['Human36M', 'MSCOCO', 'MPII', 'AGORA', 'EHF']
     trainset_3d = ['Human36M']; trainset_2d = ['MSCOCO', 'MPII']; testset = 'EHF'
 
-    ## model setting
-    pretrained_model_path = None
-    upscale = 4
-    encoder_pretrained_model_path = '../pretrained_models/osx_vit_l.pth'
-    hand_pos_joint_num = 20
-    face_pos_joint_num = 72
-    encoder_setting = 'osx_l'
-    decoder_setting = 'normal'
-    num_task_token = 24
-    feat_dim = 768
-    encoder_config_file = 'transformer_utils/configs/osx/encoder/body_encoder_large.py'
-    num_noise_sample = 0
-
     ## UBody setting
     train_sample_interval = 10
     test_sample_interval = 100
@@ -68,6 +55,19 @@ class Config:
     human_model_path = osp.join(root_dir, 'common', 'utils', 'human_model_files')
     exp_name = 'output/exp1/pre_analysis'
 
+    ## model setting
+    pretrained_model_path = None
+    upscale = 4
+    encoder_pretrained_model_path = '../pretrained_models/osx_vit_l.pth'
+    hand_pos_joint_num = 20
+    face_pos_joint_num = 72
+    encoder_setting = 'osx_l'
+    decoder_setting = 'normal'
+    num_task_token = 24
+    feat_dim = 768
+    num_noise_sample = 0
+    encoder_config_file = os.path.join(root_dir, 'main/transformer_utils/configs/osx/encoder/body_encoder_large.py')
+
     def set_args(self, gpu_ids, lr=1e-4, continue_train=False):
         self.gpu_ids = gpu_ids
         self.num_gpus = len(self.gpu_ids.split(','))
@@ -82,11 +82,11 @@ class Config:
             names[k] = v
         self.prepare_dirs(self.exp_name)
         if self.encoder_setting == 'osx_b':
-            self.encoder_config_file = 'transformer_utils/configs/osx/encoder/body_encoder_base.py'
+            self.encoder_config_file = os.path.join(cfg.root_dir, 'main/transformer_utils/configs/osx/encoder/body_encoder_base.py')
             self.encoder_pretrained_model_path = '../pretrained_models/osx_vit_b.pth'
             self.feat_dim = 768
         elif self.encoder_setting == 'osx_l':
-            self.encoder_config_file = 'transformer_utils/configs/osx/encoder/body_encoder_large.py'
+            self.encoder_config_file = os.path.join(cfg.root_dir, 'main/transformer_utils/configs/osx/encoder/body_encoder_large.py')
             self.encoder_pretrained_model_path = '../pretrained_models/osx_vit_l.pth'
             self.feat_dim = 1024
         if 'AGORA' in self.testset:

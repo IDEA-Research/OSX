@@ -908,7 +908,6 @@ class SMPLX(SMPLH):
             model_data = np.load(smplx_path, allow_pickle=True)
         else:
             raise ValueError('Unknown extension: {}'.format(ext))
-
         data_struct = Struct(**model_data)
 
         super(SMPLX, self).__init__(
