@@ -10,7 +10,7 @@ def parse_args():
     parser.add_argument('--exp_name', type=str, default='output/test')
     parser.add_argument('--test_batch_size', type=int, default=32)
     parser.add_argument('--encoder_setting', type=str, default='osx_l', choices=['osx_b', 'osx_l'])
-    parser.add_argument('--decoder_setting', type=str, default='normal', choices=['normal', 'wo_face_decoder', 'wo_decoder'])
+    parser.add_argument('--decoder_setting', type=str, default='wo_face_decoder', choices=['normal', 'wo_face_decoder', 'wo_decoder'])
     parser.add_argument('--testset', type=str, default='EHF')
     parser.add_argument('--agora_benchmark', action='store_true')
     parser.add_argument('--pretrained_model_path', type=str, default='../pretrained_models/osx_l.pth.tar')

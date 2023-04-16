@@ -50,21 +50,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 - Python packages:
 
   ```shell
-  pip install -r requirements.txt
-  ```
-
-- mmcv-full:
-
-  ```shell
-  pip install openmim
-  mim install mmcv-full==1.7.1
-  ```
-
-- mmpose:
-
-  ```shell
-  cd main/transformer_utils
-  python setup.py develop
+  bash install.sh
   ```
 
 ## 3. Quick demo  
@@ -285,7 +271,7 @@ You can zip the `predictions` folder into `predictions.zip` and submit it to the
 
 * `RuntimeError: Subtraction, the '-' operator, with a bool tensor is not supported. If you are trying to invert a mask, use the '~' or 'logical_not()' operator instead.`: Go to [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527)
 
-* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27). It seems that this solution only works for RTX3090. If it works for V100 or A100 in your case, please tell me in the issue :)
+* `TypeError: startswith first arg must be bytes or a tuple of bytes, not str.`: Go to [here](https://github.com/mcfletch/pyopengl/issues/27). 
 
 ### Acknowledgement
 
