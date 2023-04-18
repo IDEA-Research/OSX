@@ -98,6 +98,7 @@ class UBody_Part(torch.utils.data.Dataset):
                     video_name = video_name.split('_Trim')[0]
                 if video_name in test_video_list: continue   # exclude the test video
                 img_path = osp.join(self.img_path, file_name)
+                if not os.path.exists(img_path): continue
 
                 # exclude the samples that are crowd or have few visible keypoints
                 if ann['iscrowd'] or (ann['num_keypoints']==0): continue
@@ -185,6 +186,7 @@ class UBody_Part(torch.utils.data.Dataset):
                     video_name = video_name.split('_Trim')[0]
                 if video_name not in test_video_list: continue  # exclude the train video
                 img_path = osp.join(self.img_path, file_name)
+                if not os.path.exists(img_path): continue
 
                 # exclude the samples that are crowd or have few visible keypoints
                 if ann['iscrowd'] or (ann['num_keypoints']==0): continue
