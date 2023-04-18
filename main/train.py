@@ -8,13 +8,14 @@ def parse_args():
     parser.add_argument('--gpu', type=str, dest='gpu_ids')
     parser.add_argument('--lr', type=str, dest='lr', default="1e-4")
     parser.add_argument('--continue', dest='continue_train', action='store_true')
-    parser.add_argument('--exp_name', type=str, default='output/test')
+    parser.add_argument('--exp_name', type=str, default='output/train')
     parser.add_argument('--num_thread', type=int, default=16)
     parser.add_argument('--end_epoch', type=int, default=14)
     parser.add_argument('--train_batch_size', type=int, default=32)
     parser.add_argument('--encoder_setting', type=str, default='osx_l', choices=['osx_b', 'osx_l'])
     parser.add_argument('--decoder_setting', type=str, default='wo_face_decoder', choices=['normal', 'wo_face_decoder', 'wo_decoder'])
     parser.add_argument('--agora_benchmark', action='store_true')
+    parser.add_argument('--ubody_finetune', action='store_true')
     parser.add_argument('--pretrained_model_path', type=str, default='../pretrained_models/osx_l.pth.tar')
     args = parser.parse_args()
 
@@ -42,7 +43,8 @@ def main():
                             decoder_setting=args.decoder_setting,
                             end_epoch=args.end_epoch,
                             pretrained_model_path=args.pretrained_model_path,
-                            agora_benchmark=args.agora_benchmark
+                            agora_benchmark=args.agora_benchmark,
+                            ubody_finetune=args.ubody_finetune
                             )
     cudnn.benchmark = True
     from common.base import Trainer

@@ -5,13 +5,14 @@ import sys
 class Config:
 
     # dataset setting
-    dataset_list = ['Human36M', 'MSCOCO', 'MPII', 'AGORA', 'EHF']
+    dataset_list = ['Human36M', 'MSCOCO', 'MPII', 'AGORA', 'EHF', 'UBody']
     trainset_3d = ['Human36M']; trainset_2d = ['MSCOCO', 'MPII']; testset = 'EHF'
 
     ## UBody setting
     train_sample_interval = 10
     test_sample_interval = 100
     make_same_len = False
+    ubody_finetune = False
 
     ## input, output size
     input_img_shape = (512, 384)
@@ -96,6 +97,10 @@ class Config:
             self.trainset_3d = ['AGORA']
             self.trainset_2d = []
             self.testset = 'AGORA'
+        if self.ubody_finetune:
+            self.trainset_3d = ['UBody']
+            self.trainset_2d = []
+            self.testset = 'UBody'
 
     def prepare_dirs(self, exp_name):
         self.output_dir = osp.join(self.root_dir, exp_name)

@@ -170,3 +170,42 @@ def restore_bbox(bbox_center, bbox_size, aspect_ratio, extension_ratio):
     bbox[:, 2] = bbox[:, 2] + bbox[:, 0]
     bbox[:, 3] = bbox[:, 3] + bbox[:, 1]
     return bbox
+
+def get_projection_matrix(cx, cy, fx, fy, width, height):
+    """Return the OpenGL projection matrix for this camera.
+
+    Parameters
+    ----------
+    fx : float
+        X-axis focal length in pixels.
+    fy : float
+        Y-axis focal length in pixels.
+    cx : float
+        X-axis optical center in pixels.
+    cy : float
+        Y-axis optical center in pixels.
+    width : int
+        Width of the current viewport, in pixels.
+    height : int
+        Height of the current viewport, in pixels.
+    """
+    width = float(width)
+    height = float(height)
+
+    P = np.zeros((4,4))
+    P[0][0] = 2.0 * fx / width
+    P[1][1] = 2.0 * fy / height
+    P[0][2] = 1.0 - 2.0 * cx / (width - 1.0)
+    P[1][2] = 2.0 * cy / (height - 1.0) - 1.0
+    P[3][2] = -1.0
+
+    n = self.znear
+    f = self.zfar
+    if f is None:
+        P[2][2] = -1.0
+        P[2][3] = -2.0 * n
+    else:
+        P[2][2] = (f + n) / (n - f)
+        P[2][3] = (2 * f * n) / (n - f)
+
+    return P
