@@ -54,9 +54,8 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 
 ## 3. Quick demo  
 
-* Slightly change `torchgeometry` kernel code following [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527).
 * Download the pre-trained OSX from [here](https://drive.google.com/drive/folders/1x7MZbB6eAlrq5PKC9MaeIm4GqkBpokow?usp=share_link).
-* Prepare `input.png` and pre-trained snapshot at `demo` folder.
+* Prepare pre-trained snapshot at `pretrained_models` folder.
 * Prepare `human_model_files` folder following below `Directory` part and place it at `common/utils/human_model_files`.
 * Go to `demo` folders, and run `python demo.py --gpu 0 --img_path IMG_PATH --output_folder OUTPUT_FOLDER `. Please replace `IMG_PATH` and `OUTPUT_FOLDRE` with your own image path and saving folder. 
 * If you run this code in ssh environment without display device, do follow:
@@ -219,6 +218,22 @@ You can zip the `predictions` folder into `predictions.zip` and submit it to the
 
 You can use a light-weight version OSX by adding `--encoder_setting osx_b`.
 
+#### (4) Finetune on UBody-train and Test on UBody-test
+
+In the `main` folder, run  
+
+```bash  
+python train.py --gpu 0,1,2,3 --lr 1e-4 --exp_name output/train_setting3 --train_batch_size 16  --ubody_finetune --decoder_setting wo_decoder --pretrained_model_path ../pretrained_models/osx_l_w.pth.tar --continue
+```
+
+After training, run the following command to evaluate your pretrained model on UBody-test:
+
+```bash  
+python test.py --gpu 0,1,2,3 --exp_name output/train_setting3/ --pretrained_model_path ../output/train_setting3/model_dump/snapshot_13.pth --testset UBody --test_batch_size 64 --decoder_setting wo_decoder 
+```
+
+The reconstruction result will be saved at `output/train_setting3/result/`.
+
 ## 6. Testing OSX
 
 #### (1) Download Pretrained Models
@@ -252,6 +267,17 @@ python test.py --gpu 0,1,2,3 --exp_name output/test_setting2  --pretrained_model
 The reconstruction result will be saved at `output/test_setting2/result/`.
 
 You can zip the `predictions` folder into `predictions.zip` and submit it to the [AGORA benchmark](https://agora-evaluation.is.tuebingen.mpg.de/) to obtain the evaluation metrics. 
+
+#### (5) Test on UBody-test
+
+In the `main` folder, run  
+
+```bash  
+python test.py --gpu 0,1,2,3 --exp_name output/test_setting3  --pretrained_model_path ../pretrained_models/osx_l_wo_decoder.pth.tar --testset UBody --test_batch_size 64
+```
+
+The reconstruction result will be saved at `output/test_setting3/result/`.
+
 ## 7. Results
 
 ### (1) AGORA test set
