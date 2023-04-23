@@ -290,7 +290,8 @@ class Model(nn.Module):
                                                       smpl_x.reduce_joint_set(meta_info['smplx_joint_trunc']))
             return loss
         else:
-            mesh_pseudo_gt = self.generate_mesh_gt(targets, mode)
+            if 'smplx_pose' in targets:
+                mesh_pseudo_gt = self.generate_mesh_gt(targets, mode)
             # change hand output joint_img according to hand bbox
             for part_name, bbox in (('lhand', lhand_bbox), ('rhand', rhand_bbox)):
                 joint_img[:, smpl_x.pos_joint_part[part_name], 0] *= (
@@ -328,7 +329,8 @@ class Model(nn.Module):
             out['lhand_bbox'] = lhand_bbox
             out['rhand_bbox'] = rhand_bbox
             out['face_bbox'] = face_bbox
-            out['smplx_mesh_cam_pseudo_gt'] = mesh_pseudo_gt
+            if 'smplx_pose' in targets:
+                out['smplx_mesh_cam_pseudo_gt'] = mesh_pseudo_gt
             if 'smplx_mesh_cam' in targets:
                 out['smplx_mesh_cam_target'] = targets['smplx_mesh_cam']
             if 'smpl_mesh_cam' in targets:

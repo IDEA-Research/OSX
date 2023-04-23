@@ -4,7 +4,6 @@ import os.path as osp
 import argparse
 import numpy as np
 import torchvision.transforms as transforms
-from torch.nn.parallel.data_parallel import DataParallel
 import torch.backends.cudnn as cudnn
 import torch
 sys.path.insert(0, osp.join('..', 'main'))
@@ -17,7 +16,9 @@ def parse_args():
     parser.add_argument('--gpu', type=str, dest='gpu_ids')
     parser.add_argument('--img_path', type=str, default='input.png')
     parser.add_argument('--output_folder', type=str, default='output')
-
+    parser.add_argument('--encoder_setting', type=str, default='osx_l', choices=['osx_b', 'osx_l'])
+    parser.add_argument('--decoder_setting', type=str, default='normal', choices=['normal', 'wo_face_decoder', 'wo_decoder'])
+    parser.add_argument('--pretrained_model_path', type=str, default='../pretrained_models/osx_l.pth.tar')
     args = parser.parse_args()
 
     # test gpus
@@ -37,19 +38,18 @@ cfg.set_args(args.gpu_ids)
 cudnn.benchmark = True
 
 # load model
-cfg.set_additional_args(encoder_setting='osx_l', decoder_setting='normal')
-from OSX import get_model
+cfg.set_additional_args(encoder_setting=args.encoder_setting, decoder_setting=args.decoder_setting, pretrained_model_path=args.pretrained_model_path)
+from common.base import Demoer
+demoer = Demoer()
+demoer._make_model()
 from common.utils.preprocessing import load_img, process_bbox, generate_patch_image
 from common.utils.vis import render_mesh, save_obj
 from common.utils.human_models import smpl_x
-model_path = '../pretrained_models/osx_l.pth.tar'
+model_path = args.pretrained_model_path
 assert osp.exists(model_path), 'Cannot find model at ' + model_path
 print('Load checkpoint from {}'.format(model_path))
-model = get_model('test')
-model = DataParallel(model).cuda()
-ckpt = torch.load(model_path)
-model.load_state_dict(ckpt['network'], strict=False)
-model.eval()
+
+demoer.model.eval()
 
 # prepare input image
 transform = transforms.ToTensor()
@@ -82,7 +82,7 @@ for num, indice in enumerate(indices):
 
     # mesh recovery
     with torch.no_grad():
-        out = model(inputs, targets, meta_info, 'test')
+        out = demoer.model(inputs, targets, meta_info, 'test')
 
     mesh = out['smplx_mesh_cam'].detach().cpu().numpy()
     mesh = mesh[0]
