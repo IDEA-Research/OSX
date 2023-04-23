@@ -57,7 +57,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 * Download the pre-trained OSX from [here](https://drive.google.com/drive/folders/1x7MZbB6eAlrq5PKC9MaeIm4GqkBpokow?usp=share_link).
 * Prepare pre-trained snapshot at `pretrained_models` folder.
 * Prepare `human_model_files` folder following below `Directory` part and place it at `common/utils/human_model_files`.
-* Go to `demo` folders, and run `python demo.py --gpu 0 --img_path IMG_PATH --output_folder OUTPUT_FOLDER `. Please replace `IMG_PATH` and `OUTPUT_FOLDRE` with your own image path and saving folder. 
+* Go to `demo` folders, and run `python demo.py --gpu 0 --img_path IMG_PATH --output_folder OUTPUT_FOLDER `. Please replace `IMG_PATH` and `OUTPUT_FOLDRE` with your own image path and saving folder. You can add `--decoder_setting wo_decoder --pretrained_model_path ../pretrained_models/osx_l_wo_decoder.pth` to use the encoder-only version OSX for a more efficenit inference.
 * If you run this code in ssh environment without display device, do follow:
 ```
 1、Install oemesa follow https://pyrender.readthedocs.io/en/latest/install/
