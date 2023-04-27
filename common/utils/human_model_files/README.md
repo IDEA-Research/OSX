@@ -28,6 +28,6 @@ Here we provide the download link of each files:
 
 - **smplx**: [MANO_SMPLX_vertex_ids.pkl and SMPL-X__FLAME_vertex_ids.npy](https://download.is.tue.mpg.de/download.php?domain=smplx&sfile=smplx_mano_flame_correspondences.zip), [SMPLX_NEUTRAL.pkl, SMPLX_NEUTRAL.npz, SMPLX_MALE.npz, SMPLX_FEMALE.npz](https://download.is.tue.mpg.de/download.php?domain=smplx&sfile=SMPLX_NEUTRAL_2020.npz), [SMPLX_to_J14.pkl](https://github.com/vchoutas/expose#preparing-the-data). 
 
-- **mano**: [here](https://psfiles.is.tuebingen.mpg.de/downloads/mano/mano_v1_2-zip)
+- **mano**: [here](https://psfiles.is.tuebingen.mpg.de/downloads/mano/mano_v1_2-zip). If you meet problem such as `Download denied`, refer this [issue](https://github.com/IDEA-Research/OSX/issues/9#issuecomment-1525067231).
 
 - **flame**:  [flame_dynamic_embedding.npy and flame_static_embedding.pkl](https://github.com/soubhiksanyal/RingNet/tree/master/flame_model), [FLAME_NEUTRAL.pkl](https://download.is.tue.mpg.de/download.php?domain=flame&resume=1&sfile=FLAME2019.zip). You need to rename `generic_model.pkl` to `FLAME_NEUTRAL.pkl`.
