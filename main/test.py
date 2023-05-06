@@ -13,7 +13,7 @@ def parse_args():
     parser.add_argument('--decoder_setting', type=str, default='wo_face_decoder', choices=['normal', 'wo_face_decoder', 'wo_decoder'])
     parser.add_argument('--testset', type=str, default='EHF')
     parser.add_argument('--agora_benchmark', action='store_true')
-    parser.add_argument('--pretrained_model_path', type=str, default='../pretrained_models/osx_l.pth.tar')
+    parser.add_argument('--pretrained_model_path', type=str, default='../pretrained_models/osx_l_wo_face_decoder.pth.tar')
     args = parser.parse_args()
 
     if not args.gpu_ids:
