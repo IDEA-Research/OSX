@@ -1,7 +1,5 @@
 # **One-Stage 3D Whole-Body Mesh Recovery with Component Aware Transformer**
-
 ### [Project Page](https://osx-ubody.github.io/) | [Video](https://osx-ubody.github.io/) | [Paper](http://arxiv.org/abs/2303.16160) | [Data](https://docs.google.com/forms/d/e/1FAIpQLSehgBP7wdn_XznGAM2AiJPiPLTqXXHw5uX9l7qeQ1Dh9HoO_A/viewform)
-
 #### Authors
 
 [Jing Lin](https://github.com/linjing7), [Ailing Zeng](https://ailingzeng.site/), [Haoqian Wang](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Lei Zhang](https://www.leizhang.org/), [Yu Li](https://yu-li.github.io/)
@@ -25,7 +23,6 @@
 <br>
 <em> Demo of Grounded-SAM-OSX.</em>
 </p>
-
 
 
 | ![space-1.jpg](./assets/grounded_sam_osx_output1.jpg) |
@@ -63,7 +60,6 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 * Prepare `human_model_files` folder following below `Directory` part and place it at `common/utils/human_model_files`.
 * Go to `demo` folders, and run `python demo.py --gpu 0 --img_path IMG_PATH --output_folder OUTPUT_FOLDER `. Please replace `IMG_PATH` and `OUTPUT_FOLDRE` with your own image path and saving folder. For a more efficient inference, you can add `--decoder_setting wo_decoder --pretrained_model_path ../pretrained_models/osx_l_wo_decoder.pth` to use the encoder-only version OSX.
 * If you run this code in ssh environment without display device, do follow:
-
 ```
 1、Install oemesa follow https://pyrender.readthedocs.io/en/latest/install/
 2、Reinstall the specific pyopengl fork: https://github.com/mmatl/pyopengl
@@ -71,11 +67,8 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 ```
 
 ## 4. Directory  
-
 ### (1) Root  
-
 The `${ROOT}` is described as below.  
-
 ```  
 ${ROOT}  
 |-- data  
@@ -108,7 +101,6 @@ ${ROOT}
 |   |   |   |   |-- flame_static_embedding.pkl
 |   |   |   |   |-- FLAME_NEUTRAL.pkl
 ```
-
 * `data` contains data loading codes.  
 * `dataset` contains soft links to images and annotations directories.  
 * `pretrained_models` contains pretrained models.  
@@ -118,11 +110,8 @@ ${ROOT}
 * `output` contains log, trained models, visualized outputs, and test result.  
 * `common` contains kernel codes for Hand4Whole.  
 * `human_model_files` contains `smpl`, `smplx`, `mano`, and `flame` 3D model files. Download the files from [[smpl]](https://smpl.is.tue.mpg.de/) [[smplx]](https://smpl-x.is.tue.mpg.de/) [[SMPLX_to_J14.pkl]](https://github.com/vchoutas/expose#preparing-the-data) [[mano]](https://mano.is.tue.mpg.de/) [[flame]](https://flame.is.tue.mpg.de/). We provide the download links for each file [here](https://github.com/IDEA-Research/OSX/tree/main/common/utils/human_model_files).
-
 ### (2) Data  
-
 You need to follow directory structure of the `dataset` as below.  
-
 ```  
 ${ROOT}  
 |-- dataset  
@@ -170,32 +159,22 @@ ${ROOT}
 ```
 
 * Download AGORA parsed data [[data](https://drive.google.com/drive/folders/18CWsL28e8v50rqEbYMoU4yHHWoGJdpg_?usp=sharing)][[parsing codes](tool/AGORA)]
-
 * Download EHF parsed data [[data](https://drive.google.com/file/d/1Ji2PuB2HYQzRpQ016LwSSLguFMezQqOI/view?usp=sharing)]
-
 * Download Human3.6M parsed data and SMPL-X parameters [[data](https://drive.google.com/drive/folders/1r0B9I3XxIIW_jsXjYinDpL6NFcxTZart?usp=sharing)][[SMPL-X parameters from NeuralAnnot](https://drive.google.com/drive/folders/19ifIQtAB3ll8d37-kerL1eQWp31mOwJM?usp=sharing)]
-
 * Download MPII parsed data and SMPL-X parameters [[data](https://drive.google.com/drive/folders/1rrL_RxhwQgwhq5BU1iIRPwl285B_KTpU?usp=sharing)][[SMPL-X parameters from NeuralAnnot](https://drive.google.com/file/d/1alkKvhkqQGqriKst83uS-kUG7v6SkM7W/view?usp=sharing)]
-
 * Download MPI-INF-3DHP parsed data and SMPL-X parameters [[data](https://drive.google.com/drive/folders/1wQbHEXPv-WH1sNOLwdfMVB7OWsiJkq2M?usp=sharing)][[SMPL-X parameters from NeuralAnnot](https://drive.google.com/file/d/1ADOJlaqaBDjZ3IEgrgLTQwNf6iHd-rGH/view?usp=sharing)]
-
 * Download MSCOCO data and SMPL-X parameters [[data](https://github.com/jin-s13/COCO-WholeBody)][[SMPL-X parameters](https://drive.google.com/file/d/1UVyfqrOtkbhI3MgpBYXd1YXbkD8aJtL9/view?usp=share_link)]
-
 * Download 3DPW parsed data [[data](https://drive.google.com/drive/folders/1HByTBsdg_A_o-d89qd55glTl44ya3dOs?usp=sharing)]
-
 * Download UBody dataset from [[data](https://docs.google.com/forms/d/e/1FAIpQLSehgBP7wdn_XznGAM2AiJPiPLTqXXHw5uX9l7qeQ1Dh9HoO_A/viewform)] and run the following commond to convert the videos into images:
 
   ```
   cd tool/UBody
   python video2image.py
   ```
-
 * All annotation files follow [MSCOCO format](http://cocodataset.org/#format-data). If you want to add your own dataset, you have to convert it to [MSCOCO format](http://cocodataset.org/#format-data).  
-
+  
 ### (3) Output  
-
 You need to follow the directory structure of the `output` folder as below.  
-
 ```  
 ${ROOT}  
 |-- output  
@@ -204,7 +183,6 @@ ${ROOT}
 |   |-- result  
 |   |-- vis  
 ```
-
 * Creating `output` folder as soft link form is recommended instead of folder form because it would take large storage capacity.  
 * `log` folder contains training log file.  
 * `model_dump` folder contains saved checkpoints for each epoch.  
@@ -213,7 +191,6 @@ ${ROOT}
 
 
 ## 5. Training OSX
-
 #### (1) Download Pretrained Encoder
 
 Download pretrained encoder `osx_vit_l.pth` and `osx_vit_b.pth` from [here](https://drive.google.com/drive/folders/1x7MZbB6eAlrq5PKC9MaeIm4GqkBpokow?usp=share_link) and place the pretrained model to `pretrained_models/`.
@@ -221,11 +198,9 @@ Download pretrained encoder `osx_vit_l.pth` and `osx_vit_b.pth` from [here](http
 #### (2) Train on MSCOCO, Human3.6m, MPII and Test on EHF and AGORA-val
 
 In the `main` folder, run  
-
 ```bash  
 python train.py --gpu 0,1,2,3 --lr 1e-4 --exp_name output/train_setting1 --end_epoch 14 --train_batch_size 16
 ```
-
 After training, run the following command to evaluate your pretrained model on EHF and AGORA-val:
 
 ```bash  
@@ -234,9 +209,7 @@ python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_mode
 # test on AGORA-val
 python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth --testset AGORA
 ```
-
 To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder setting by adding `--decoder_setting wo_face_decoder`
-
 #### (3) Train on AGORA and Test on AGORA-test
 
 In the `main` folder, run  
@@ -321,15 +294,13 @@ The reconstruction result will be saved at `output/test_setting3/result/`.
 
 ### (1) AGORA test set
 
-<img src="/Users/linjing/Documents/my_work/3D/HPS/code/OSX_v1/assets/agora_test.png" alt="image-20230327202353903" style="zoom: 33%;" />
+<img src="./assets/agora_test.png" alt="image-20230327202353903" style="zoom: 33%;" />
 
 ### (2) AGORA-val, EHF, 3DPW
 
+<img src="./assets/ehf_3dpw.png" alt="image-20230327202755593" style="zoom:67%;" />
 
-
-<img src="/Users/linjing/Documents/my_work/3D/HPS/code/OSX_v1/assets/ehf_3dpw.png" alt="image-20230327202755593" style="zoom:67%;" />
-
-<img src="/Users/linjing/Documents/my_work/3D/HPS/code/OSX_v1/assets/agora_val.png" alt="image-20230327204220453" style="zoom:67%;" />
+<img src="./assets/agora_val.png" alt="image-20230327204220453" style="zoom:67%;" />
 
 
 
