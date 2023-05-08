@@ -349,7 +349,7 @@ This repo is mainly based on [Hand4Whole](https://github.com/mks0601/Hand4Whole_
 @article{lin2023one,
   title={One-Stage 3D Whole-Body Mesh Recovery with Component Aware Transformer},
   author={Lin, Jing and Zeng, Ailing and Wang, Haoqian and Zhang, Lei and Li, Yu},
-	booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year={2023},
 }
 ```
