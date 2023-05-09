@@ -151,6 +151,7 @@ ${ROOT}
 |   |   |   |-- 3DPW_test.json
 |   |   |-- imageFiles
 |   |-- UBody
+|   |   |-- images
 |   |   |-- videos
 |   |   |-- annotations
 |   |   |-- splits
