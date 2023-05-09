@@ -15,7 +15,7 @@ def parse_args():
     parser.add_argument('--encoder_setting', type=str, default='osx_l', choices=['osx_b', 'osx_l'])
     parser.add_argument('--decoder_setting', type=str, default='wo_face_decoder', choices=['normal', 'wo_face_decoder', 'wo_decoder'])
     parser.add_argument('--agora_benchmark', action='store_true')
-    parser.add_argument('--ubody_finetune', action='store_true')
+    parser.add_argument('--ubody_benchmark', action='store_true')
     parser.add_argument('--pretrained_model_path', type=str, default='../pretrained_models/osx_l.pth.tar')
     args = parser.parse_args()
 
@@ -44,7 +44,7 @@ def main():
                             end_epoch=args.end_epoch,
                             pretrained_model_path=args.pretrained_model_path,
                             agora_benchmark=args.agora_benchmark,
-                            ubody_finetune=args.ubody_finetune
+                            ubody_benchmark=args.ubody_benchmark
                             )
     cudnn.benchmark = True
     from common.base import Trainer

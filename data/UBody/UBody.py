@@ -514,11 +514,13 @@ class UBody(Dataset):
             db = UBody_Part(transform, mode, scene=scene)
             self.dbs.append(db)
             self.datalist += db.datalist
+            break
 
         self.db_num = len(self.dbs)
         self.max_db_data_num = max([len(db) for db in self.dbs])
         self.db_len_cumsum = np.cumsum([len(db) for db in self.dbs])
         self.make_same_len = cfg.make_same_len
+        print(f'Number of images: {sum([len(db) for db in self.dbs])}')
 
     def __len__(self):
         # all dbs have the same length
@@ -654,13 +656,15 @@ class UBody(Dataset):
             mesh_gt_face = mesh_gt[smpl_x.face_vertex_idx, :]
             mesh_out_face = mesh_out[smpl_x.face_vertex_idx, :]
             mesh_out_face_align = rigid_align(mesh_out_face, mesh_gt_face)
-            eval_result['pa_mpvpe_face'].append(
-                np.sqrt(np.sum((mesh_out_face_align - mesh_gt_face) ** 2, 1))[mesh_face_valid].mean() * 1000)
+            if sum(mesh_face_valid) != 0:
+                eval_result['pa_mpvpe_face'].append(
+                    np.sqrt(np.sum((mesh_out_face_align - mesh_gt_face) ** 2, 1))[mesh_face_valid].mean() * 1000)
             mesh_out_face_align = mesh_out_face - np.dot(smpl_x.J_regressor, mesh_out)[smpl_x.J_regressor_idx['neck'],
                                                   None, :] + np.dot(smpl_x.J_regressor, mesh_gt)[
                                                              smpl_x.J_regressor_idx['neck'], None, :]
-            eval_result['mpvpe_face'].append(
-                np.sqrt(np.sum((mesh_out_face_align - mesh_gt_face) ** 2, 1))[mesh_face_valid].mean() * 1000)
+            if sum(mesh_face_valid) != 0:
+                eval_result['mpvpe_face'].append(
+                    np.sqrt(np.sum((mesh_out_face_align - mesh_gt_face) ** 2, 1))[mesh_face_valid].mean() * 1000)
 
             # MPJPE from body joints
             joint_gt_body = np.dot(smpl_x.j14_regressor, mesh_gt)
@@ -687,12 +691,12 @@ class UBody(Dataset):
             if len(pa_mpjpe_hand)>0:
                 eval_result['pa_mpjpe_hand'].append(np.mean(pa_mpjpe_hand))
 
-            data_dict = {}
-            data_dict['mpvpe_all'] = eval_result['mpvpe_all'][-1]
-            data_dict['mpvpe_hand'] = eval_result['mpvpe_hand'][-1]
-            data_dict['mpvpe_face'] = eval_result['mpvpe_face'][-1]
-            data_dict['mesh'] = mesh_out
-            data_dict['mesh_gt'] = mesh_gt
+            # data_dict = {}
+            # data_dict['mpvpe_all'] = eval_result['mpvpe_all'][-1]
+            # data_dict['mpvpe_hand'] = eval_result['mpvpe_hand'][-1]
+            # data_dict['mpvpe_face'] = eval_result['mpvpe_face'][-1]
+            # data_dict['mesh'] = mesh_out
+            # data_dict['mesh_gt'] = mesh_gt
 
             vis = cfg.vis
             save_folder = cfg.vis_dir

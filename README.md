@@ -195,7 +195,7 @@ ${ROOT}
 
 Download pretrained encoder `osx_vit_l.pth` and `osx_vit_b.pth` from [here](https://drive.google.com/drive/folders/1x7MZbB6eAlrq5PKC9MaeIm4GqkBpokow?usp=share_link) and place the pretrained model to `pretrained_models/`.
 
-#### (2) Train on MSCOCO, Human3.6m, MPII and Test on EHF and AGORA-val
+#### (2) Setting1:  Train on MSCOCO, Human3.6m, MPII and Test on EHF and AGORA-val
 
 In the `main` folder, run  
 ```bash  
@@ -210,7 +210,7 @@ python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_mode
 python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth --testset AGORA
 ```
 To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder setting by adding `--decoder_setting wo_face_decoder`
-#### (3) Train on AGORA and Test on AGORA-test
+#### (3) Setting2: Train on AGORA and Test on AGORA-test
 
 In the `main` folder, run  
 
@@ -230,12 +230,12 @@ You can zip the `predictions` folder into `predictions.zip` and submit it to the
 
 You can use a light-weight version OSX by adding `--encoder_setting osx_b`.
 
-#### (4) Finetune on UBody-train and Test on UBody-test
+#### (4) Setting3:  Train on MSCOCO, Human3.6m, MPII, UBody-Train and Test on UBody-val
 
 In the `main` folder, run  
 
 ```bash  
-python train.py --gpu 0,1,2,3 --lr 1e-4 --exp_name output/train_setting3 --train_batch_size 16  --ubody_finetune --decoder_setting wo_decoder --pretrained_model_path ../pretrained_models/osx_l_w.pth.tar --continue
+python train.py --gpu 0,1,2,3 --lr 1e-4 --exp_name output/train_setting3 --train_batch_size 16  --ubody_benchmark --decoder_setting wo_decoder
 ```
 
 After training, run the following command to evaluate your pretrained model on UBody-test:
