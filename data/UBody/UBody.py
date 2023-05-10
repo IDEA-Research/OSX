@@ -514,7 +514,6 @@ class UBody(Dataset):
             db = UBody_Part(transform, mode, scene=scene)
             self.dbs.append(db)
             self.datalist += db.datalist
-            break
 
         self.db_num = len(self.dbs)
         self.max_db_data_num = max([len(db) for db in self.dbs])
