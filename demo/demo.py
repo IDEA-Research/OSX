@@ -13,7 +13,7 @@ import cv2
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--gpu', type=str, dest='gpu_ids')
+    parser.add_argument('--gpu', type=str, dest='gpu_ids', default='0')
     parser.add_argument('--img_path', type=str, default='input.png')
     parser.add_argument('--output_folder', type=str, default='output')
     parser.add_argument('--encoder_setting', type=str, default='osx_l', choices=['osx_b', 'osx_l'])

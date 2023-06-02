@@ -389,8 +389,6 @@ class Model(nn.Module):
                 out['smplx_mesh_cam_pseudo_gt'] = mesh_pseudo_gt
             if 'smplx_mesh_cam' in targets:
                 out['smplx_mesh_cam_target'] = targets['smplx_mesh_cam']
-            if 'smpl_mesh_cam' in targets:
-                out['smpl_mesh_cam_target'] = targets['smpl_mesh_cam']
             if 'bb2img_trans' in meta_info:
                 out['bb2img_trans'] = meta_info['bb2img_trans']
             return out

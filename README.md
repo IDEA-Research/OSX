@@ -1,5 +1,5 @@
 # **One-Stage 3D Whole-Body Mesh Recovery with Component Aware Transformer**
-### [Project Page](https://osx-ubody.github.io/) | [Video](https://osx-ubody.github.io/) | [Paper](http://arxiv.org/abs/2303.16160) | [Data](https://docs.google.com/forms/d/e/1FAIpQLSehgBP7wdn_XznGAM2AiJPiPLTqXXHw5uX9l7qeQ1Dh9HoO_A/viewform)
+### [Project Page](https://osx-ubody.github.io/) | [Video](https://www.youtube.com/watch?v=s0cG3OVXQUo&t=2s) | [Paper](http://arxiv.org/abs/2303.16160) | [Data](https://docs.google.com/forms/d/e/1FAIpQLSehgBP7wdn_XznGAM2AiJPiPLTqXXHw5uX9l7qeQ1Dh9HoO_A/viewform)
 #### Authors
 
 [Jing Lin](https://github.com/linjing7), [Ailing Zeng](https://ailingzeng.site/), [Haoqian Wang](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Lei Zhang](https://www.leizhang.org/), [Yu Li](https://yu-li.github.io/)
@@ -58,7 +58,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 * Download the pre-trained OSX from [here](https://drive.google.com/drive/folders/1x7MZbB6eAlrq5PKC9MaeIm4GqkBpokow?usp=share_link).
 * Prepare pre-trained snapshot at `pretrained_models` folder.
 * Prepare `human_model_files` folder following below `Directory` part and place it at `common/utils/human_model_files`.
-* Go to `demo` folders, and run `python demo.py --gpu 0 --img_path IMG_PATH --output_folder OUTPUT_FOLDER `. Please replace `IMG_PATH` and `OUTPUT_FOLDRE` with your own image path and saving folder. For a more efficient inference, you can add `--decoder_setting wo_decoder --pretrained_model_path ../pretrained_models/osx_l_wo_decoder.pth` to use the encoder-only version OSX.
+* Go to `demo` folders, and run `python demo.py --gpu 0 --img_path IMG_PATH --output_folder OUTPUT_FOLDER `. Please replace `IMG_PATH` and `OUTPUT_FOLDRE` with your own image path and saving folder. For a more efficient inference, you can add `--decoder_setting wo_decoder --pretrained_model_path ../pretrained_models/osx_l_wo_decoder.pth.tar` to use the encoder-only version OSX.
 * If you run this code in ssh environment without display device, do follow:
 ```
 1、Install oemesa follow https://pyrender.readthedocs.io/en/latest/install/
@@ -206,9 +206,9 @@ After training, run the following command to evaluate your pretrained model on E
 
 ```bash  
 # test on EHF
-python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth --testset EHF
+python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth.tar --testset EHF
 # test on AGORA-val
-python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth --testset AGORA
+python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth.tar --testset AGORA
 ```
 To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder setting by adding `--decoder_setting wo_face_decoder`
 #### (3) Setting2: Train on AGORA and Test on AGORA-test
@@ -222,7 +222,7 @@ python train.py --gpu 0,1,2,3 --lr 1e-4 --exp_name output/train_setting2 --end_e
 After training, run the following command to evaluate your pretrained model on AGORA-test:
 
 ```bash  
-python test.py --gpu 0,1,2,3 --exp_name output/train_setting2/ --pretrained_model_path ../output/train_setting2/model_dump/snapshot_139.pth --testset AGORA --agora_benchmark --test_batch_size 64 --decoder_setting wo_decoder
+python test.py --gpu 0,1,2,3 --exp_name output/train_setting2/ --pretrained_model_path ../output/train_setting2/model_dump/snapshot_139.pth.tar --testset AGORA --agora_benchmark --test_batch_size 64 --decoder_setting wo_decoder
 ```
 
 The reconstruction result will be saved at `output/train_setting2/result/`.
