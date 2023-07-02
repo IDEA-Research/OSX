@@ -2,7 +2,7 @@
 ### [Project Page](https://osx-ubody.github.io/) | [Video](https://www.youtube.com/watch?v=s0cG3OVXQUo&t=2s) | [Paper](http://arxiv.org/abs/2303.16160) | [Data](https://docs.google.com/forms/d/e/1FAIpQLSehgBP7wdn_XznGAM2AiJPiPLTqXXHw5uX9l7qeQ1Dh9HoO_A/viewform)
 #### Authors
 
-[Jing Lin](https://github.com/linjing7), [Ailing Zeng](https://ailingzeng.site/), [Haoqian Wang](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Lei Zhang](https://www.leizhang.org/), [Yu Li](https://yu-li.github.io/)
+[Jing Lin](https://jinglin7.github.io), [Ailing Zeng](https://ailingzeng.site/), [Haoqian Wang](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Lei Zhang](https://www.leizhang.org/), [Yu Li](https://yu-li.github.io/)
 
 <p align="middle">
 <img src="assets/demo_video.gif" width="1000">
