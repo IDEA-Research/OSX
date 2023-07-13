@@ -2,7 +2,7 @@
 
 ## Cleaning SMPL parameters
 * This process will convert CudaFloatTensor smpl parameters to numpy format.
-* Download and unzip `smpl_gt.zip` and `smplx_gt.zip`
+* Download and unzip `smpl_gt.zip` and `smplx_gt.zip` from [here](https://agora.is.tue.mpg.de/download.php).
 * Run `python tensor_to_numpy_parameter.py --dataset_path $PATH1`. $PATH1 denotes AGORA dataset path. 
 
 ## Make annotation files
