@@ -102,8 +102,8 @@ def gen_trans_from_patch_cv(c_x, c_y, src_width, src_height, dst_width, dst_heig
     return trans
 
 class AGORA(torch.utils.data.Dataset):
-    def __init__(self, out_height, out_width):
-        self.root_path = '/mnt/disk3/AGORA'
+    def __init__(self, root_path, out_height, out_width):
+        self.root_path = root_path
         self.img_shape = (2160, 3840) # height, width
         self.out_shape = (out_height, out_width)
         
