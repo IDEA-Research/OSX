@@ -59,7 +59,7 @@ def parse_args():
     return args
 
 args = parse_args()
-root_path = args.root_path
+root_path = args.dataset_path
 smplx_layer = smplx.create(args.human_model_path, 'smplx', use_pca=False)
 
 image_id = 0
