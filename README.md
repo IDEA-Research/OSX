@@ -13,10 +13,11 @@
 
 
 #### News
-
-- **2023.04.15 :** We merge OSX into [Grounded-SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything)  and support promptable 3D whole-body mesh recovery. 🔥  
-- **2023.04.17 :** We fix bug of rendering in A100/V100  and support yolov5 as a person detector in demo.py. :rocket: 
+- **2023.07.28 :** Ubody can boost 2D whole-body pose estimation and controllable image generation, especially for in-the-wild hand keypoint detection. The training and test code and pre-trained models are released. See [details](https://github.com/IDEA-Research/DWPose)🥳. 
 - **2023.05.03 :** UBody-V1 is released. We'll release UBody-V2 later, which have manually annotated bboxes. :man_dancing:
+- **2023.04.17 :** We fix bug of rendering in A100/V100  and support yolov5 as a person detector in demo.py. :rocket: 
+- **2023.04.15 :** We merge OSX into [Grounded-SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything)  and support promptable 3D whole-body mesh recovery. 🔥  
+
 
 <p align="middle">
 <img src="assets/grouned_sam_osx_demo.gif" width="1000">
