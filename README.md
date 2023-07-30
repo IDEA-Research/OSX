@@ -211,7 +211,7 @@ python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_mode
 # test on AGORA-val
 python test.py --gpu 0,1,2,3 --exp_name output/train_setting1/ --pretrained_model_path ../output/train_setting1/model_dump/snapshot_13.pth.tar --testset AGORA
 ```
-To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder setting by adding `--decoder_setting wo_face_decoder`
+To speed up, you can use a light-weight version OSX by change the encoder setting by adding `--encoder_setting osx_b` or change the decoder setting by adding `--decoder_setting wo_face_decoder`.We recommend adding `--decoder_setting wo_face_decoder` as it would obviously speed up and would not lead to significant performance decline. It takes about 20 hours to finish the training with one NVIDIA A100.
 #### (3) Setting2: Train on AGORA and Test on AGORA-test
 
 In the `main` folder, run  
