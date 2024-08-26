@@ -13,6 +13,7 @@
 
 
 #### News
+- **2024.08.26 :** Update the implementation of the re-projection from SMPL-X to whole-body 2d keypoints (e.g., to align the 3D-to-2D keypoints), please check 3. Quick demo [Update information], Thanks to [Yuhang Yang](https://github.com/yyvhang).
 - **2023.10.12 :** UBody is now supported in [MMPose](https://github.com/open-mmlab/mmpose). Please feel free to use it.  🌟 
 - **2023.07.28 :** UBody can boost 2D whole-body pose estimation and controllable image generation, especially for in-the-wild hand keypoint detection. The training and test code and pre-trained models are released. See [details](https://github.com/IDEA-Research/DWPose). 🥳
 - **2023.05.03 :** UBody-V1 is released. We'll release UBody-V2 later, which have manually annotated bboxes. :man_dancing:
@@ -61,7 +62,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of [One-
 * Prepare pre-trained snapshot at `pretrained_models` folder.
 * Prepare `human_model_files` folder following below `Directory` part and place it at `common/utils/human_model_files`.
 * Go to `demo` folders, and run `python demo.py --gpu 0 --img_path IMG_PATH --output_folder OUTPUT_FOLDER `. Please replace `IMG_PATH` and `OUTPUT_FOLDRE` with your own image path and saving folder. For a more efficient inference, you can add `--decoder_setting wo_decoder --pretrained_model_path ../pretrained_models/osx_l_wo_decoder.pth.tar` to use the encoder-only version OSX.
-* Now, the inference code will output the projected 2d kpts with shape (137,2), please refer to [here](https://github.com/IDEA-Research/OSX/blob/118cf97fb1f144930bf93d88794b525d579b2d0c/common/utils/human_models.py#L71) for details of these 137 key points. The SMPLX version we use has 144 joints, please refer to this [line](https://github.com/IDEA-Research/OSX/blob/118cf97fb1f144930bf93d88794b525d579b2d0c/main/OSX.py#L72). if you want to use COCO format key points, please refer to [here](https://github.com/IDEA-Research/OSX/blob/118cf97fb1f144930bf93d88794b525d579b2d0c/data/MSCOCO/MSCOCO.py#L41). Note: the key points projected onto the image may be misaligned with humans, this is likely due to inaccurate boxes provided by detection models. It is recommended to use more advanced detection models or manually set bounding boxes.
+* [**Update information**] The inference code will output the projected 2d kpts with shape (137,2), please refer to [here](https://github.com/IDEA-Research/OSX/blob/118cf97fb1f144930bf93d88794b525d579b2d0c/common/utils/human_models.py#L71) for details of these 137 key points. The SMPLX version we use has 144 joints, please refer to this [line](https://github.com/IDEA-Research/OSX/blob/118cf97fb1f144930bf93d88794b525d579b2d0c/main/OSX.py#L72). if you want to use COCO format key points, please refer to [here](https://github.com/IDEA-Research/OSX/blob/118cf97fb1f144930bf93d88794b525d579b2d0c/data/MSCOCO/MSCOCO.py#L41). Note: the key points projected onto the image may be misaligned with humans, this is likely due to inaccurate boxes provided by detection models. It is recommended to use more advanced detection models or manually set bounding boxes.
 * If you run this code in ssh environment without display device, do follow:
 ```
 1、Install oemesa follow https://pyrender.readthedocs.io/en/latest/install/
