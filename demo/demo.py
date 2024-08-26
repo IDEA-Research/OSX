@@ -43,7 +43,7 @@ from common.base import Demoer
 demoer = Demoer()
 demoer._make_model()
 from common.utils.preprocessing import load_img, process_bbox, generate_patch_image
-from common.utils.vis import render_mesh, save_obj
+from common.utils.vis import render_mesh, save_obj, vis_keypoints
 from common.utils.human_models import smpl_x
 model_path = args.pretrained_model_path
 assert osp.exists(model_path), 'Cannot find model at ' + model_path
@@ -69,7 +69,8 @@ for detection in person_results:
     confidences.append(confidence)
     boxes.append([x1, y1, x2 - x1, y2 - y1])
 indices = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
-vis_img = original_img.copy()
+vis_mesh = original_img.copy()
+vis_kpts = original_img.copy()
 for num, indice in enumerate(indices):
     bbox = boxes[indice]  # x,y,h,w
     bbox = process_bbox(bbox, original_img_width, original_img_height)
@@ -93,7 +94,15 @@ for num, indice in enumerate(indices):
     # render mesh
     focal = [cfg.focal[0] / cfg.input_body_shape[1] * bbox[2], cfg.focal[1] / cfg.input_body_shape[0] * bbox[3]]
     princpt = [cfg.princpt[0] / cfg.input_body_shape[1] * bbox[2] + bbox[0], cfg.princpt[1] / cfg.input_body_shape[0] * bbox[3] + bbox[1]]
-    vis_img = render_mesh(vis_img, mesh, smpl_x.face, {'focal': focal, 'princpt': princpt})
+    vis_mesh = render_mesh(vis_mesh, mesh, smpl_x.face, {'focal': focal, 'princpt': princpt})
 
+    #get_2d_pts
+    joint_proj = out['smplx_joint_proj'].detach().cpu().numpy()[0]
+    joint_proj[:, 0] = joint_proj[:, 0] / cfg.output_hm_shape[2] * cfg.input_img_shape[1]
+    joint_proj[:, 1] = joint_proj[:, 1] / cfg.output_hm_shape[1] * cfg.input_img_shape[0]
+    joint_proj = np.concatenate((joint_proj, np.ones_like(joint_proj[:, :1])), 1)
+    joint_proj = np.dot(bb2img_trans, joint_proj.transpose(1, 0)).transpose(1, 0)
+    vis_kpts = vis_keypoints(vis_kpts, joint_proj)
 # save rendered image
-cv2.imwrite(os.path.join(args.output_folder, f'render.jpg'), vis_img[:, :, ::-1])
+cv2.imwrite(os.path.join(args.output_folder, f'render.jpg'), vis_mesh[:, :, ::-1])
+cv2.imwrite(os.path.join(args.output_folder, f'kpts.jpg'), vis_kpts[:, :, ::-1])
