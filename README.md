@@ -13,7 +13,7 @@
 
 
 #### News
-- **2024.08.26 :** Update the implementation of the re-projection from SMPL-X to whole-body 2d keypoints (e.g., to align the 3D-to-2D keypoints), please check 3. Quick demo [Update information], Thanks to [Yuhang Yang](https://github.com/yyvhang).
+- **2024.08.26 :** Update the implementation of the re-projection from SMPL-X to whole-body 2d keypoints (e.g., to align the 3D-to-2D keypoints), please check **3. Quick demo [Update information]**, Thanks to [Yuhang Yang](https://github.com/yyvhang).
 - **2023.10.12 :** UBody is now supported in [MMPose](https://github.com/open-mmlab/mmpose). Please feel free to use it.  🌟 
 - **2023.07.28 :** UBody can boost 2D whole-body pose estimation and controllable image generation, especially for in-the-wild hand keypoint detection. The training and test code and pre-trained models are released. See [details](https://github.com/IDEA-Research/DWPose). 🥳
 - **2023.05.03 :** UBody-V1 is released. We'll release UBody-V2 later, which have manually annotated bboxes. :man_dancing:
